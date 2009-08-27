@@ -63,7 +63,7 @@ describe 'Timers'
       tick(200)
       called.should.be_true
       called = false
-      clearInterval(id)
+      clearInterval(id).should.be_true
       tick(400)
       called.should.be_false
     end
