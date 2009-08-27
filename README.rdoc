@@ -22,7 +22,7 @@ a large increment in milliseconds may cause the callbacks to be called several t
 to 'catch up'.
 
   progress = ''
-  setInterval(function(){
+  var id = setInterval(function(){
     progress += '.'
   }, 100)
   
@@ -31,6 +31,10 @@ to 'catch up'.
   tick(100), print(progress) // '..'
   tick(100), print(progress) // '...'
   tick(300), print(progress) // '......'
+  
+  clearInterval(id)
+  
+  tick(800) // Nothing happens
   
 You may also reset at any time using resetTimers()
 
