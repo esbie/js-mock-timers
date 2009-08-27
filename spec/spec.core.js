@@ -78,6 +78,10 @@ describe 'Timers'
       called.should.eql 3
       tick(800)
       called.should.eql 7
+      tick(300)
+      called.should.eql 8
+      tick(100)
+      called.should.eql 9
     end
   end
 end
