@@ -22,6 +22,13 @@ describe 'Timers'
       tick(200)
       called.should.be_true
     end
+
+    it 'should be called when ticked passed the duration, even if timeout duration is 0'
+      var called = false
+      setTimeout(function(){ called = true }, 0)
+      tick(1)
+      called.should.be_true
+    end
     
     it 'should be destroyed once called'
       var called = false
@@ -31,6 +38,13 @@ describe 'Timers'
       called = false
       tick(200)
       called.should.be_false
+    end
+
+    it 'should call timeout once with long ticks'
+      var called = 0
+      setTimeout(function(){ ++called }, 200)
+      tick(1000)
+      called.should.eql 1
     end
   end
   
